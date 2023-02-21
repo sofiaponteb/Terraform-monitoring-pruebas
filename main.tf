@@ -1,3 +1,17 @@
+terraform {
+  required_version = ">= 1.0.0, < 2.0.0"
+  required_providers {
+    ibm = {
+      source  = "IBM-Cloud/ibm"
+      version = "~> 1.33.0"
+    }
+  }
+}
+
+provider "ibm" {
+  region = var.region
+}
+
 #Sysdig service
 resource "ibm_resource_instance" "sysdig" {
   name              = "${var.enviroment_name}-sysdig-monitor"
