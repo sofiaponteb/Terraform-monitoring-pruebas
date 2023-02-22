@@ -12,19 +12,23 @@ provider "ibm" {
   region = var.region
 }
 
+data "ibm_resource_group" "group" {
+  name = "vpcdemo-rg"
+}
+
 #Sysdig service
 resource "ibm_resource_instance" "sysdig" {
   name              = "${var.enviroment_name}-sysdig-monitor"
   service           = "sysdig-monitor"
   plan              = var.sysdig_plan
   location          = var.region
-  resource_group_id = var.resource_group_id
+  resource_group_id = data.ibm_resource_group.group.id
 }
 
 #LogDNA service
 resource "ibm_resource_instance" "logdna-flowlog" {
   name              = "${var.enviroment_name}-logdna-flowlog"
-  resource_group_id = var.resource_group_id
+  resource_group_id = data.ibm_resource_group.group.id
   service           = "logdna"
   plan              = "lite"
   location          = "us-south"
@@ -36,5 +40,5 @@ resource "ibm_resource_instance" "activityt" {
   service           = "logdnaat"
   plan              = var.activityt_plan
   location          = var.region
-  resource_group_id = var.resource_group_id
+  resource_group_id = data.ibm_resource_group.group.id
 }
