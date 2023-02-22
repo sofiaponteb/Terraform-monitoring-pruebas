@@ -22,7 +22,7 @@ resource "ibm_resource_instance" "sysdig" {
   service           = "sysdig-monitor"
   plan              = var.sysdig_plan
   location          = var.region
-  resource_group    = data.ibm_resource_group.all_rg.id
+  resource_group_id    = data.ibm_resource_group.all_rg.id
 }
 
 #LogDNA service
@@ -40,5 +40,5 @@ resource "ibm_resource_instance" "activityt" {
   service           = "logdnaat"
   plan              = var.activityt_plan
   location          = var.region
-  resource_group    = data.ibm_resource_group.all_rg.id
+  resource_group_id    = data.ibm_resource_group.all_rg.id
 }
