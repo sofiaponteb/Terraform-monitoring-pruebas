@@ -28,7 +28,5 @@ variable "activityt_instance_name" {
   default = " IBM-Cloud-activity-tracker-"
 }
 
-variable "resource_group" {
-  description = "ID for IBM Cloud Resource Group"
-  default = "vpcdemo-rg"
+variable "ibm_is_resource_group_id" {
 }
